@@ -1,14 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
 
 const Books = () => {
   const [books, setBooks] = useState([]);
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await axios.get(`http://localhost:5003/books`);
+        const response = await axios.get(
+          `https://bookshelf-full-project.vercel.app/books`
+        );
         setBooks(response.data);
         console.log(response.data);
       } catch (error) {
@@ -20,8 +21,12 @@ const Books = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5003/books/${id}`);
-      const response = await axios.get(`http://localhost:5003/books`);
+      await axios.delete(
+        `https://bookshelf-full-project.vercel.app/books/${id}`
+      );
+      const response = await axios.get(
+        `https://bookshelf-full-project.vercel.app/books`
+      );
       setBooks(response.data);
     } catch (error) {
       console.log(error);

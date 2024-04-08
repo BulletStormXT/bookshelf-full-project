@@ -1,7 +1,6 @@
-
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import {useState} from "react";
+import { useState } from "react";
 
 const Add = () => {
   const [books, setBooks] = useState({
@@ -15,7 +14,6 @@ const Add = () => {
     created: "",
     updated: "",
     pages: "",
-    
   });
   const navigate = useNavigate();
   const handleChange = (e) => {
@@ -25,7 +23,10 @@ const Add = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5003/books", books);
+      await axios.post(
+        "https://bookshelf-full-project.vercel.app/books",
+        books
+      );
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -58,31 +59,31 @@ const Add = () => {
         onChange={handleChange}
         name="author"
       />
-       <input
+      <input
         type="text"
         placeholder="country"
         onChange={handleChange}
         name="country"
       />
-         <input
+      <input
         type="text"
         placeholder="imageLink"
         onChange={handleChange}
         name="imageLink"
       />
-     <input
+      <input
         type="text"
         placeholder=" language"
         onChange={handleChange}
         name="language"
-      /> 
+      />
       <input
         type="text"
         placeholder="link"
         onChange={handleChange}
         name="link"
       />
-  
+
       <input
         type="number"
         placeholder=" year "
@@ -95,7 +96,7 @@ const Add = () => {
         onChange={handleChange}
         name="pages"
       />
- 
+
       <button
         onClick={handleClick}
         style={{

@@ -1,5 +1,4 @@
 import "./App.css";
-import React from "react";
 import Add from "./pages/Add";
 import Books from "./pages/Books";
 import Update from "./pages/Update";
