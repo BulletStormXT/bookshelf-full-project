@@ -23,10 +23,7 @@ const Add = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(
-        "https://bookshelf-full-project.vercel.app/books",
-        books
-      );
+      await axios.post("http://localhost:5003/books", books);
       navigate("/");
     } catch (error) {
       console.log(error);

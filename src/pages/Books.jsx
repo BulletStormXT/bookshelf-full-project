@@ -7,9 +7,7 @@ const Books = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await axios.get(
-          `https://bookshelf-full-project.vercel.app/books`
-        );
+        const response = await axios.get(`http://localhost:5003/books`);
         setBooks(response.data);
         console.log(response.data);
       } catch (error) {
@@ -21,12 +19,8 @@ const Books = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(
-        `https://bookshelf-full-project.vercel.app/books/${id}`
-      );
-      const response = await axios.get(
-        `https://bookshelf-full-project.vercel.app/books`
-      );
+      await axios.delete(`http://localhost:5003/books/${id}`);
+      const response = await axios.get(`http://localhost:5003/books`);
       setBooks(response.data);
     } catch (error) {
       console.log(error);
