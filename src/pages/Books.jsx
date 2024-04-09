@@ -100,7 +100,7 @@ const Books = () => {
                 }}
                 onClick={() => handleDelete(book._id)}
               >
-                Deleted
+                Delete
               </button>
               <button
                 style={{
