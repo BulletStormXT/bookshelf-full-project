@@ -9,11 +9,11 @@ app.use(express.json());
 app.use(cors());
 const PORT = process.env.PORT || 5000;
 
-async function DataBase() {
+async function dataBase() {
   mongoose.connect(process.env.URL);
-  console.log("DataBase is connected");
+  console.log("dataBase is connected");
 }
-DataBase().catch((error) => console.log(error));
+dataBase().catch((error) => console.log(error));
 
 app.use("/books", booksRoutes);
 

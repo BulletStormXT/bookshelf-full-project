@@ -25,20 +25,20 @@ router
       year: req.body.year,
       pages: req.body.pages,
     });
-    const result = books;
+    // const result = books;
     try {
-      const response = {
-        title: result.title, // title is the key in the request body
-        author: result.author,
-        country: result.country,
-        imageLink: result.imageLink,
-        language: result.language,
-        link: result.link,
-        year: result.year,
-        pages: result.pages,
-      };
-      res.send(response);
-      console.log(response);
+      // const response = {
+      //   title: result.title, // title is the key in the request body
+      //   author: result.author,
+      //   country: result.country,
+      //   imageLink: result.imageLink,
+      //   language: result.language,
+      //   link: result.link,
+      //   year: result.year,
+      //   pages: result.pages,
+      // };
+      res.send(books);
+      console.log(books);
     } catch (error) {
       res.send(error);
     }
@@ -63,11 +63,11 @@ router
       res.status(404).send("Doesn't exist");
     }
   })
-  .put("/:id", (req, res) => {
+  .put("/:id", async (req, res) => {
     // Logik zum Aktualisieren von Buchinformationen
     try {
       const booksID = req.params.id;
-      const result = Books.findByIdAndUpdate(booksID, {
+      const result = await Books.findByIdAndUpdate(booksID, {
         title: req.body.title, // title is the key in the request body
         author: req.body.author,
         country: req.body.country,
@@ -75,8 +75,8 @@ router
         language: req.body.language,
         link: req.body.link,
         year: req.body.year,
-        created_at: req.body.created_at,
-        updated_at: req.body.updated_at,
+        // created_at: req.body.created_at,
+        // updated_at: req.body.updated_at,
         pages: req.body.pages,
       });
       res.send(result);

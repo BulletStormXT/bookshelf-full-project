@@ -27,6 +27,16 @@ const Books = () => {
     }
   };
 
+  const handleUpdate = async (id) => {
+    try {
+      await axios.put(`http://localhost:5003/books/${id}`);
+      const response = await axios.get(`http://localhost:5003/books`);
+      setBooks(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <h1>My BookShelf</h1>
@@ -91,7 +101,7 @@ const Books = () => {
                 style={{
                   gap: "20px",
                   color: "#F3686D",
-                  backgroundColor: "#444;",
+                  backgroundColor: "#444",
                   border: "none",
                   borderRadius: "5px",
                   cursor: "pointer",
@@ -106,13 +116,14 @@ const Books = () => {
                 style={{
                   gap: "20px",
                   color: "#60C5F1",
-                  backgroundColor: "#444;",
+                  backgroundColor: "#444",
                   border: "none",
                   borderRadius: "5px",
                   cursor: "pointer",
                   padding: "5px 10px",
                   margin: "5px",
                 }}
+                onClick={() => handleUpdate(book._id)}
               >
                 Update
               </button>
